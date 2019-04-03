@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}TMS{% endblock %}</title>
+{% block custom_includes %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+{% endblock %}
+{% block internalstyles %}
+{#    <style>#}
+{#        body {#}
+{#            background-color: cornflowerblue;#}
+{#        }#}
+{#    </style>#}
+{% endblock %}
+</head>
+<body>
+{% block header %}
+
+   <nav>
+    <div class="nav-wrapper" style="background-color: darkslategrey">
+{#      <h2 style="text-align: center">Logo</h2>#}
+        <a href="#!" class="brand-logo">Timetable Management System</a>
+      <ul class="right">
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'registrations:logout' %}">logout</a></li>
+        {% else %}
+        <li><a href="{% url 'registrations:login' %}">login</a></li>
+         <li> <a href="{% url 'registrations:signup' %}">signup</a></li>
+        {% endif %}
+      </ul>
+
+      </div>
+  </nav>
+
+
+
+{% endblock %}
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</html>

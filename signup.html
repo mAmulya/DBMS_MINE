@@ -1,0 +1,61 @@
+
+{#{% block content %}#}
+{#  <h2>Sign up</h2>#}
+{#  <form method="post">#}
+{#    {% csrf_token %}#}
+{#    {% for field in form %}#}
+{#      <p>#}
+{#        {{ field.label_tag }}<br>#}
+{#        {{ field }}#}
+{##}
+{#        {% for error in field.errors %}#}
+{#          <p style="color: red">{{ error }}</p>#}
+{#        {% endfor %}#}
+{#      </p>#}
+{#    {% endfor %}#}
+{#    <button type="submit">Sign up</button>#}
+{#  </form>#}
+{#{% endblock %}#}
+
+
+{% extends 'base.html' %}
+
+{% block custom_includes %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="row" style="padding-left: 35%;padding-top: 10%">
+    <div class="col s12 m6">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title" style="margin-left: 40%">SIGNUP</span>
+           <form method="post">
+           {% csrf_token %}
+           {% for field in form %}
+             <p>
+               {{ field.label_tag }}<br>
+               {{ field }}
+
+               {% for error in field.errors %}
+                 <p style="color: red">{{ error }}</p>
+               {% endfor %}
+             </p>
+           {% endfor %}
+              <button class="btn waves-effect waves-light" type="submit" name="action"
+              style="margin-left: 35%">SignUp
+               <i class="material-icons right">send</i>
+              </button>
+           </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+
